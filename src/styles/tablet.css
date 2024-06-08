@@ -1,0 +1,322 @@
+@media only screen and (min-width: 701px) and (max-width: 1199px){
+    /*NAV BAR*/
+    nav{
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      align-items: center;
+      justify-items: end;
+    
+      height: auto;
+      background-color: black;
+      color: whitesmoke;
+      padding: 2rem 2rem 2rem 2rem;
+    }
+  
+    .nav-menu{
+      display: none;
+    }
+    
+    .nav-logo{
+      display: flex;
+      align-items: center;
+      justify-content: start;
+    }
+    
+    .nav-logo-img{
+      width: 3rem;
+      height: 3rem;
+    }
+    
+    .nav-logo-title{
+      font-size: 2rem;
+    }
+  
+    .nav-ham{
+      height: 44px;
+      width: 44px;
+      background: none;
+      border: none;
+      display: block;
+    }
+  
+    .nav-ham-icon{
+      height: 44px;
+      width: 44px;
+    }
+    
+  /*OFFSCREEN MENU*/  
+    .offscreen-menu-close{
+      color: whitesmoke;
+      font-size: 4rem;
+    }
+    
+    .offscreen-menu{
+      background-color: black;
+      height: 100%;
+      width: 25rem;
+      padding: 2rem 2rem 2rem 2rem;
+      position: fixed;
+      z-index: 10001;
+      top: 0;
+      right: -500px;
+      display: flex;
+      flex-flow: column;
+      gap: 3rem;
+      justify-content: start;
+      align-items: start;
+      text-align: left;
+      font-size: 2rem;
+      transition: .3s ease;
+    }
+  
+    .offscreen-menu ul{
+      display: flex;
+      flex-flow: column;
+      gap: 1.5rem;
+    }
+    
+    .fa-xmark{
+      margin-bottom: 2rem;
+    }
+    
+    .offscreen-menu a:link{
+      text-decoration: none;
+      color: grey;
+    }
+    
+    .offscreen-menu a:visited{
+      text-decoration: none;
+      color: white;
+    }
+    
+    .offscreen-menu a:hover{
+      text-decoration: underline;
+    }
+    
+    .offscreen-menu.active{
+      right: 0;
+      text-decoration-line: none;
+    }
+  
+  /*JUMBOTRON*/
+    .jumbotron{
+      background-image: url(../public/images/heros/hero-image_1.jpg);
+      background-size: cover;
+      width: 100%;
+      height: 30rem;
+      display: flex;
+      flex-flow: column;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .jumbotron-text{
+      padding: 1rem 3rem 1rem 3rem;
+      background-color: rgb(201, 201, 201, 0.5);
+    }
+    
+    .jumbotron-text-title{
+      font-size: 3.5rem;
+      text-align: center;
+    }
+    
+    .jumbotron-text-subtitle{
+      margin-top: -1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .intro{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: #c9c9c9;
+      padding: 10rem 2rem 10rem 2rem;
+    }
+    
+    .intro-logo-img{
+      width: 12rem;
+      height: 12rem;
+    }
+    
+    .intro-text{
+      display: flex;
+      flex-flow: column;
+    }
+    
+    .intro-text-title{
+      font-size: 2.5rem;
+    }
+  
+    .intro-text-description{
+      font-size: 1.5rem;
+    }
+    
+    .katalog-subtitle{
+      font-size: 2rem;
+      text-align: center;
+      color: whitesmoke;
+      margin: 1rem 0rem 1rem 0rem;
+    }
+    
+ /* RESTAURANT CATALOG */
+ #jelajahi-restoran{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #c9c9c9;
+  }
+  .catalog-link{
+    display: none;
+  }
+  .catalog-image{
+    display: flex;
+    justify-items: center;
+
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(0%);
+    transition: 100ms ease-in-out;
+  }
+  .catalog-text{
+    position: relative;
+    padding: 0.5rem;
+  }
+  .catalog-text-name{
+    font-size: 1.5rem;
+  }
+  .catalog-text-city{
+    font-size: 1rem;
+  }
+  .catalog-text-rating{
+    font-size: 1rem;
+  }
+  .bintang{
+    color: #ffd250;
+  }
+  .catalog-text-description{
+    font-size: 1.25rem;
+    font-weight: 350;
+    text-align: justify;
+    overflow: hidden;
+    height: 150px;
+    margin-top: 0.5rem;
+  }
+  .catalog-text-transition{
+    height: 50px;
+    position: relative;
+    bottom: 50px;
+    background-image: linear-gradient(to bottom, rgba(245,245,245,0), rgba(245,245,245,1));
+  }
+  .catalog-link-mobile{
+    position: relative;
+    bottom: 85px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    min-height: 44px;
+    background-color: rgb(245, 245, 245, 0.5);
+    border-radius: 1rem;
+    border: black 2px solid;
+  }
+  .catalog-link-mobile a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /*DETAIL PAGE*/
+  .content-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    background-color: #c9c9c9;
+  }
+  .content-container-kanan{
+    display: flex;
+    flex-flow: column;
+    margin-top: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+  }
+  .name{
+    font-size: 2.5rem;
+  }
+  .image{
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .description p{
+    text-align: justify;
+  }
+  .menus-container{
+    display: none;
+    transition: 100ms ease-in-out;
+  }
+  .menus-container.active{
+    display: flex;
+    gap: 5rem;
+    transition: 100ms ease-in-out;
+  }
+  .menus-title{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .menus-title-plus{
+    text-align: right;
+    font-weight: bold;
+  }
+  .menus-foods-subtitle, .menus-drinks-subtitle{
+    font-weight: 550;
+    text-align: center;
+  }
+  .menus ul{
+    list-style-type: circle;
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+    margin-left: 1.5rem;
+  }
+  .review{
+    padding-top: 1rem;
+  }
+  .review h3{
+    text-align: center;
+    font-size: 2rem;
+    color: #c9c9c9;
+  }
+  .review-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1rem;
+    margin: 1rem;
+    justify-items: center;
+  }
+  .review-container-item{
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+    justify-content: center;
+
+    width: 350px;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  .review-container-review{
+    font-size: 1.25rem;
+  }
+  .review-container-bottom{
+    font-size: 1rem;
+  }
+}

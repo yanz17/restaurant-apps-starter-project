@@ -1,24 +1,26 @@
-import CONFIG from "../../globals/config";
+/* eslint-disable eol-last */
+/* eslint-disable no-trailing-spaces */
+import CONFIG from '../../globals/config';
 
 const createRestaurantDetailTemplate = (restaurant) => {
-    const categoriesArray = restaurant.categories;
-    const foodsArray = restaurant.menus.foods;
-    const foodsImplement = foodsArray.map(foods => `<li><p>${foods.name}</p></li>`);
-    
-    const drinksArray = restaurant.menus.drinks;
-    const drinksImplement = drinksArray.map(drinks => `<li><p>${drinks.name}</p></li>`);
-    
-    const reviewsArray = restaurant.customerReviews;
-    const reviewsImplement = reviewsArray.map(reviews => `
+  const categoriesArray = restaurant.categories;
+  const foodsArray = restaurant.menus.foods;
+  const foodsImplement = foodsArray.map((foods) => `<li><p>${foods.name}</p></li>`);
+
+  const drinksArray = restaurant.menus.drinks;
+  const drinksImplement = drinksArray.map((drinks) => `<li><p>${drinks.name}</p></li>`);
+
+  const reviewsArray = restaurant.customerReviews;
+  const reviewsImplement = reviewsArray.map((reviews) => `
         <div class="review-container-item">
             <p class="review-container-review">"${reviews.review}"</p>
             <p class="review-container-bottom">oleh ${reviews.name} | ${reviews.date}</p>
         </div>
     `);
 
-    return `
+  return `
         <div class="content-container">
-            <img class="content-container-kiri image" src="${CONFIG.BASE_IMAGE_URL + 'large/' + restaurant.pictureId}" alt="${restaurant.name}" />
+            <img class="content-container-kiri image" src="${`${CONFIG.BASE_IMAGE_URL}large/${restaurant.pictureId}`}" alt="${restaurant.name}" />
             <div class="content-container-kanan">
                 <h2 class="name">${restaurant.name}</h2>
                 <div id="likeButtonContainer"></div>
@@ -33,7 +35,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
                 <div class="categories">
                     <hr>
                     <h3>Kategori</h3>
-                    <p class="categories-name">${categoriesArray.map(category => `<span>${category.name}</span>`).join(', ')}</p>
+                    <p class="categories-name">${categoriesArray.map((category) => `<span>${category.name}</span>`).join(', ')}</p>
                 </div>
                 <div class="rating">
                     <hr>
@@ -75,12 +77,12 @@ const createRestaurantDetailTemplate = (restaurant) => {
             </div>
         </div>
     `;
-}
+};
 
 const createRestaurantItemTemplate = (restaurants) => `
     <div class="catalog" id="${restaurants.id}">
         <button class="catalog-link"><a href="/#/detail/${restaurants.id}">Selengkapnya</a></button>
-        <img class="catalog-image" src="${CONFIG.BASE_IMAGE_URL + 'large/' + restaurants.pictureId}" alt="${restaurants.name}" />
+        <img class="catalog-image" src="${`${CONFIG.BASE_IMAGE_URL}large/${restaurants.pictureId}`}" alt="${restaurants.name}" />
         <div class="catalog-text">
             <h4 class="catalog-text-name">${restaurants.name}</h4>
             <p class="catalog-text-city">${restaurants.city} | ${restaurants.rating} <span class="bintang">★</span></p>
@@ -96,12 +98,16 @@ const createLikeButtonTemplate = () => `
      <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
- 
+
 const createLikedButtonTemplate = () => `
   <button aria-label="unlike this movie" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
-
-export { createRestaurantDetailTemplate, createRestaurantItemTemplate, createLikeButtonTemplate, createLikedButtonTemplate };
+export {
+  createRestaurantDetailTemplate, 
+  createRestaurantItemTemplate, 
+  createLikeButtonTemplate, 
+  createLikedButtonTemplate,
+};

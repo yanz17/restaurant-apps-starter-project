@@ -1,14 +1,15 @@
+/* eslint-disable no-useless-constructor */
 class appBar extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render(){
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
             <nav>
                 <div class="nav-logo">
                     <img class="nav-logo-img" src="/images/logo/cat-logo.png" alt="Logo RestCat">
@@ -26,7 +27,7 @@ class appBar extends HTMLElement {
                 </button>
             </nav>
         `;
-    }
+  }
 }
 
-customElements.define("app-bar", appBar);
+customElements.define('app-bar', appBar);

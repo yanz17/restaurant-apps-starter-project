@@ -1,11 +1,14 @@
-import RestaurantSource from "../../data/restaurant-source";
-import UrlParser from "../../routes/url-parser";
-import { createRestaurantItemTemplate } from "../templates/template-creator";
+/* eslint-disable import/extensions */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+import RestaurantSource from '../../data/restaurant-source';
+import UrlParser from '../../routes/url-parser';
+import { createRestaurantItemTemplate } from '../templates/template-creator';
 import '../../component/loader.js';
 
 const Home = {
-    async render() {
-        return `
+  async render() {
+    return `
             <pre-loader></pre-loader>
             <div class="jumbotron">
                 <div class="jumbotron-text">
@@ -32,38 +35,37 @@ const Home = {
             </form>
             <div class="restaurant-container" id="main"></div>
         `;
-    },
+  },
 
-    async afterRender() {
-        const url = UrlParser.parseActiveUrlWithCombiner();
-        const restaurant = await RestaurantSource.getListRestaurant();
-        const restaurantCatalog = document.querySelector('.restaurant-container');
-        restaurant.forEach((restaurants) => {
-            restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurants);
-        });
+  async afterRender() {
+    const restaurant = await RestaurantSource.getListRestaurant();
+    const restaurantCatalog = document.querySelector('.restaurant-container');
+    restaurant.forEach((restaurants) => {
+      restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurants);
+    });
 
-        const form = document.querySelector('.search');
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
+    const form = document.querySelector('.search');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
 
-            const searchQuery = document.querySelector('.search-input').value;
-            
-            RestaurantSource.searchRestaurant(searchQuery)
-            .then((searchResults) => {
-                // Clear the previous search results
-                restaurantCatalog.innerHTML = '';
+      const searchQuery = document.querySelector('.search-input').value;
 
-                // Render the new search results
-                searchResults.forEach((restaurant) => {
-                    restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurant);
-                });
-            })
-            .catch((error) => {
-                console.error('Error searching restaurants:', error);
-                // Handle the error appropriately
-            });
+      RestaurantSource.searchRestaurant(searchQuery)
+        .then((searchResults) => {
+          // Clear the previous search results
+          restaurantCatalog.innerHTML = '';
+
+          // Render the new search results
+          searchResults.forEach((restaurant) => {
+            restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurant);
+          });
         })
-    },
+        .catch((error) => {
+          console.error('Error searching restaurants:', error);
+          // Handle the error appropriately
+        });
+    });
+  },
 };
 
 export default Home;

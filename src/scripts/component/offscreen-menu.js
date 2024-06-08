@@ -1,14 +1,15 @@
+/* eslint-disable no-useless-constructor */
 class offScreenMenu extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback(){
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render(){
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
             <div class="offscreen-menu">
                 <button class="offscreen-menu-close">
                     <svg class="fa-solid fa-xmark fa-lg" style="color: white"></svg>
@@ -27,17 +28,17 @@ class offScreenMenu extends HTMLElement {
             </div>
         `;
 
-        const navHam = document.querySelector('.nav-ham');
-        const offScreen = document.querySelector('.offscreen-menu');
-        navHam.addEventListener('click', () => {
-            offScreen.classList.toggle('active');
-        });
+    const navHam = document.querySelector('.nav-ham');
+    const offScreen = document.querySelector('.offscreen-menu');
+    navHam.addEventListener('click', () => {
+      offScreen.classList.toggle('active');
+    });
 
-        const closeMenu = document.querySelector('.offscreen-menu-close');
-        closeMenu.addEventListener('click', () => {
-            offScreen.classList.toggle('active');
-        })
-    }
+    const closeMenu = document.querySelector('.offscreen-menu-close');
+    closeMenu.addEventListener('click', () => {
+      offScreen.classList.toggle('active');
+    });
+  }
 }
 
-customElements.define("offscreen-menu", offScreenMenu);
+customElements.define('offscreen-menu', offScreenMenu);

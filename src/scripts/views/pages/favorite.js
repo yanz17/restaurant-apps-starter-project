@@ -1,10 +1,11 @@
-import FavoriteRestaurantIdb from "../../data/favorite-restaurant-idb";
-import { createRestaurantItemTemplate } from "../templates/template-creator";
+/* eslint-disable no-shadow */
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+import { createRestaurantItemTemplate } from '../templates/template-creator';
 import '../../component/loader';
 
 const Favorite = {
-    async render() {
-        return `
+  async render() {
+    return `
         <pre-loader></pre-loader>
         <div class="content">
             <div class="jumbotron">
@@ -17,16 +18,16 @@ const Favorite = {
           <div id="restaurant" class="restaurant-container"></div>
         </div>
       `;
-    },
-   
-    async afterRender() {
-        const restaurant = await FavoriteRestaurantIdb.getAllRestaurant();
-        const restaurantContainer = document.querySelector('#restaurant');
-        
-        restaurant.forEach((restaurant) => {
-          restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
-    },
-  };
-   
-  export default Favorite;
+  },
+
+  async afterRender() {
+    const restaurant = await FavoriteRestaurantIdb.getAllRestaurant();
+    const restaurantContainer = document.querySelector('#restaurant');
+
+    restaurant.forEach((restaurant) => {
+      restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+    });
+  },
+};
+
+export default Favorite;

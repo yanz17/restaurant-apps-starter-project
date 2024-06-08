@@ -12,7 +12,7 @@
     "lint": "eslint ./src"
   },
   "keywords": [],
-  "author": "your_name <your.email@domain.com>",
+  "author": "yangto dwiantoyan@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -25,8 +25,10 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
-    "eslint": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.29.1",
     "fake-indexeddb": "^4.0.2",
     "html-webpack-plugin": "^5.5.3",
     "http-server": "^14.1.1",

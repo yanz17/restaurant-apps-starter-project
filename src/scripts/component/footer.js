@@ -1,16 +1,17 @@
+/* eslint-disable no-unused-vars */
 class footerApp extends HTMLElement {
-    constructor() {
-      super();
-  
-      this.shadow = this.attachShadow({ mode: "open" });
-    }
-  
-    connectedCallback() {
-      this.render();
-    }
-  
-    render() {
-      this.shadow.innerHTML = `
+  constructor() {
+    super();
+
+    this.shadow = this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.shadow.innerHTML = `
           <style>
               .footer-container{
                   display: flex;
@@ -38,26 +39,25 @@ class footerApp extends HTMLElement {
               <p>${this.copyright}</p>
           </div>
       `;
-    }
-  
-    get quote() {
-      return this.getAttribute("quote");
-    }
-  
-    get copyright() {
-      return this.getAttribute("copyright");
-    }
-  
-    static get observedAttributes() {
-      return ["quote", "copyright"];
-    }
-  
-    attributeChangedCallback(prop, oldVal, newVal) {
-      if (prop === "quote" && prop === "copyright") {
-        this.render();
-      }
+  }
+
+  get quote() {
+    return this.getAttribute('quote');
+  }
+
+  get copyright() {
+    return this.getAttribute('copyright');
+  }
+
+  static get observedAttributes() {
+    return ['quote', 'copyright'];
+  }
+
+  attributeChangedCallback(prop, oldVal, newVal) {
+    if (prop === 'quote' && prop === 'copyright') {
+      this.render();
     }
   }
-  
-  customElements.define("footer-app", footerApp);
-  
+}
+
+customElements.define('footer-app', footerApp);

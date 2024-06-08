@@ -1,10 +1,11 @@
+/* eslint-disable no-useless-constructor */
 class preLoader extends HTMLElement {
-    constructor(){
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render(){
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
             <style>
                 .loader{
                     position: fixed;
@@ -43,15 +44,15 @@ class preLoader extends HTMLElement {
             <div class="loader"></div>
         `;
 
-        const loaderContainer = document.querySelector('.loader');
-        setTimeout(() => {
-            loaderContainer.classList.add("loader--hidden");
-        }, 1000);
-    }
+    const loaderContainer = document.querySelector('.loader');
+    setTimeout(() => {
+      loaderContainer.classList.add('loader--hidden');
+    }, 1000);
+  }
 
-    connectedCallback(){
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 }
 
 customElements.define('pre-loader', preLoader);

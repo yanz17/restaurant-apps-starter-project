@@ -129,6 +129,7 @@
     
     .intro{
       display: flex;
+      flex-flow: column;
       align-items: center;
       gap: 1rem;
       background-color: #c9c9c9;
@@ -287,6 +288,9 @@
     flex-flow: column;
     gap: 0.5rem;
     margin-left: 1.5rem;
+  }
+  .addreview-name, .addreview-review{
+    width: 80vw;
   }
   .review{
     padding-top: 1rem;

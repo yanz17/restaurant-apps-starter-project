@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -47,10 +48,10 @@ module.exports = {
       swDest: './sw.bundle.js',
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev/list/'),
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev/list'),
           handler: 'StaleWhileRevalidate',
           options: {
-            cacheName: 'restaurant-api',
+            cacheName: 'restaurant-list',
           },
         },
         {

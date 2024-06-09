@@ -118,7 +118,6 @@ ul a{
   display: flex;
 }
 .addreview-name, .addreview-review{
-  width: 500px;
   padding: 1rem;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;

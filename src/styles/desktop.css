@@ -155,6 +155,7 @@
       text-decoration: none;
       color: black;
       font-weight: bold;
+      padding: 1rem;
     }
     .catalog-link-mobile{
       display: none;

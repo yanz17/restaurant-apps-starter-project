@@ -47,7 +47,7 @@
   /*OFFSCREEN MENU*/  
     .offscreen-menu-close{
       color: whitesmoke;
-      font-size: 4rem;
+      font-size: 3rem;
     }
     
     .offscreen-menu{
@@ -225,6 +225,7 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    padding: 1rem;
   }
 
   /*DETAIL PAGE*/

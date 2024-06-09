@@ -7,6 +7,10 @@ p, h1, h2, h3, h4, a{
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .skip-link {
   position: absolute;
   top: -40px;

@@ -21,6 +21,9 @@ const Favorite = {
   },
 
   async afterRender() {
+    const offScreenMenu = document.querySelector('.offscreen-menu');
+    offScreenMenu.classList.remove('active');
+
     const restaurant = await FavoriteRestaurantIdb.getAllRestaurant();
     const restaurantContainer = document.querySelector('#restaurant');
 

@@ -38,6 +38,9 @@ const Home = {
   },
 
   async afterRender() {
+    const offScreenMenu = document.querySelector('.offscreen-menu');
+    offScreenMenu.classList.remove('active');
+
     const restaurant = await RestaurantSource.getListRestaurant();
     const restaurantCatalog = document.querySelector('.restaurant-container');
     restaurant.forEach((restaurants) => {

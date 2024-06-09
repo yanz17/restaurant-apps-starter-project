@@ -12,6 +12,9 @@ const Detail = {
   },
 
   async afterRender() {
+    const offScreenMenu = document.querySelector('.offscreen-menu');
+    offScreenMenu.classList.remove('active');
+
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('.detail-container');

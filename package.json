@@ -49,6 +49,7 @@
   "dependencies": {
     "@polymer/iron-media-query": "^3.0.1",
     "idb": "^8.0.0",
+    "lazysizes": "^5.3.2",
     "regenerator-runtime": "^0.14.0",
     "workbox-window": "^7.1.0"
   }

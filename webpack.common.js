@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -43,6 +44,9 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/heros/**'],
+          },
         },
       ],
     }),
@@ -78,17 +82,6 @@ module.exports = {
           quality: 50,
           progressive: true,
         }),
-      ],
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/public'),
-          to: path.resolve(__dirname, 'dist'),
-          globOptions: {
-            ignore: ['**/images/**'],
-          },
-        },
       ],
     }),
   ],

@@ -7,9 +7,6 @@ import '../styles/desktop.css';
 import '../styles/tablet.css';
 import '../styles/mobile.css';
 
-import App from './views/app.js';
-import swRegister from './utils/sw-register.js';
-
 // Importing Component
 import './component/footer.js';
 import './component/app-bar.js';
@@ -18,18 +15,30 @@ import './component/loader.js';
 
 console.log('Hello Coders! :)');
 
-const app = new App({
-  button: document.querySelector('.nav-ham'),
-  drawer: document.querySelector('.offscreen-menu'),
-  content: document.querySelector('#maincontent'),
-  closer: document.querySelector('.offscreen-menu-close'),
-});
+async function initApp() {
+  const { default: App } = await import('./views/app.js');
 
-window.addEventListener('hashchange', () => {
-  app.renderPage();
-});
+  const app = new App({
+    button: document.querySelector('.nav-ham'),
+    drawer: document.querySelector('.offscreen-menu'),
+    content: document.querySelector('#maincontent'),
+    closer: document.querySelector('.offscreen-menu-close'),
+  });
 
-window.addEventListener('load', () => {
-  app.renderPage();
+  window.addEventListener('hashchange', () => {
+    app.renderPage();
+  });
+
+  window.addEventListener('load', () => {
+    app.renderPage();
+    // eslint-disable-next-line no-use-before-define
+    initSW();
+  });
+}
+
+async function initSW() {
+  const { default: swRegister } = await import('./utils/sw-register.js');
   swRegister();
-});
+}
+
+initApp();

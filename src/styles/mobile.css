@@ -100,7 +100,7 @@
     
     /*JUMBOTRON*/
     .jumbotron{
-      background-image: url(../public/images/heros/hero-image_1.jpg);
+      background-image: url(../public/images/heros/hero-image_1-480.jpg);
       background-size: cover;
       width: 100%;
       height: 30rem;

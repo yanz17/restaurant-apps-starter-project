@@ -45,11 +45,6 @@
     }
     
   /*OFFSCREEN MENU*/  
-    .offscreen-menu-close{
-      color: whitesmoke;
-      font-size: 3rem;
-    }
-    
     .offscreen-menu{
       background-color: black;
       height: 100%;
@@ -77,6 +72,12 @@
     
     .fa-xmark{
       margin-bottom: 2rem;
+      background: none;
+      border: none;
+    }
+    .fa-xmark img{
+      width: 44px;
+      height: 54px;
     }
     
     .offscreen-menu a:link{

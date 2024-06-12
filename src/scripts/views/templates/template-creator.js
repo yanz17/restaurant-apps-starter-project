@@ -1,6 +1,10 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable eol-last */
 /* eslint-disable no-trailing-spaces */
 import CONFIG from '../../globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit.js';
 
 const createRestaurantDetailTemplate = (restaurant) => {
   const categoriesArray = restaurant.categories;
@@ -82,7 +86,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
 const createRestaurantItemTemplate = (restaurants) => `
     <div class="catalog" id="${restaurants.id}">
         <button class="catalog-link"><a href="/#/detail/${restaurants.id}">Selengkapnya</a></button>
-        <img class="catalog-image" src="${`${CONFIG.BASE_IMAGE_URL}large/${restaurants.pictureId}`}" alt="${restaurants.name}" />
+        <img class="catalog-image" loading="lazy" src="${`${CONFIG.BASE_IMAGE_URL}large/${restaurants.pictureId}`}" alt="${restaurants.name}" />
         <div class="catalog-text">
             <h4 class="catalog-text-name">${restaurants.name}</h4>
             <p class="catalog-text-city">${restaurants.city} | ${restaurants.rating} <span class="bintang">★</span></p>

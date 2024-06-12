@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-relative-packages */
 /* eslint-disable import/extensions */
 import 'regenerator-runtime'; /* for async await transpile */
@@ -5,7 +6,6 @@ import '../styles/main.css';
 import '../styles/desktop.css';
 import '../styles/tablet.css';
 import '../styles/mobile.css';
-import '../../node_modules/@fortawesome/fontawesome-free/js/all.js';
 
 import App from './views/app.js';
 import swRegister from './utils/sw-register.js';

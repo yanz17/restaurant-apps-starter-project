@@ -11,14 +11,14 @@ Scenario('showing empty liked restaurant', ({ I }) => {
   I.waitForElement('.catalog', 5);
   I.seeElement('.catalog');
 
-  I.see('Tidak ada restoran untuk ditampilkan', '.movie-item__not__found');
+  I.see('Tidak ada restoran untuk ditampilkan', '.restaurant-item__not__found');
 });
 
 Scenario('liking one restaurant', async ({ I }) => {
-  I.see('Tidak ada restoran untuk ditampilkan', '.movie-item__not__found');
+  I.see('Tidak ada restoran untuk ditampilkan', '.restaurant-item__not__found');
   // eslint-disable-next-line no-trailing-spaces
   
-  I.amOnPage('/#/home');
+  I.amOnPage('/');
 
   pause();
 
@@ -37,10 +37,10 @@ Scenario('liking one restaurant', async ({ I }) => {
   assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
 });
 
-Scenario('searching movies', async ({ I }) => {
-  I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
+Scenario('searching restaurants', async ({ I }) => {
+  I.see('Tidak ada film untuk ditampilkan', '.restaurant-item__not__found');
 
-  I.amOnPage('/#/home');
+  I.amOnPage('/');
 
   I.seeElement('.catalog-text-name a');
 

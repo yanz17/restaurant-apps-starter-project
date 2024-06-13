@@ -16,9 +16,10 @@ import './component/loader.js';
 console.log('Hello Coders! :)');
 
 async function initApp() {
-  const { default: App } = await import('./views/app.js');
+  const App = await import(/* webpackChunkName: "app-view" */ './views/app.js');
 
-  const app = new App({
+  // eslint-disable-next-line new-cap
+  const app = new App.default({
     button: document.querySelector('.nav-ham'),
     drawer: document.querySelector('.offscreen-menu'),
     content: document.querySelector('#maincontent'),
@@ -35,9 +36,8 @@ async function initApp() {
     initSW();
   });
 
-  // eslint-disable-next-line no-shadow
-  const { default: _ } = await import('lodash.debounce');
-  const logHash = _.debounce(() => {
+  const debounce = (await import(/* webpackChunkName: "lodash" */ 'lodash.debounce')).default;
+  const logHash = debounce(() => {
     console.log('Current hash:', window.location.hash);
   }, 300);
 
@@ -45,8 +45,8 @@ async function initApp() {
 }
 
 async function initSW() {
-  const { default: swRegister } = await import('./utils/sw-register.js');
-  swRegister();
+  const swRegister = await import(/* webpackChunkName: "sw-register" */ './utils/sw-register.js');
+  swRegister.default();
 }
 
 initApp();

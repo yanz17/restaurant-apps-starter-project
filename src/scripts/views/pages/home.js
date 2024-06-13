@@ -43,9 +43,21 @@ const Home = {
 
     const restaurant = await RestaurantSource.getListRestaurant();
     const restaurantCatalog = document.querySelector('.restaurant-container');
-    restaurant.forEach((restaurants) => {
-      restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurants);
-    });
+
+    const handleNoRestaurants = () => {
+      const noRestaurantsMessage = document.createElement('div');
+      noRestaurantsMessage.textContent = 'Tidak ada restoran yang dapat ditampilkan';
+      noRestaurantsMessage.classList.add('no-restaurants-message');
+      restaurantCatalog.appendChild(noRestaurantsMessage);
+    };
+
+    if (restaurant.length === 0) {
+      handleNoRestaurants();
+    } else {
+      restaurant.forEach((restaurants) => {
+        restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurants);
+      });
+    }
 
     const form = document.querySelector('.search');
     form.addEventListener('submit', (event) => {
@@ -58,10 +70,13 @@ const Home = {
           // Clear the previous search results
           restaurantCatalog.innerHTML = '';
 
-          // Render the new search results
-          searchResults.forEach((restaurant) => {
-            restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurant);
-          });
+          if (searchResults.length === 0) {
+            handleNoRestaurants();
+          } else {
+            searchResults.forEach((restaurant) => {
+              restaurantCatalog.innerHTML += createRestaurantItemTemplate(restaurant);
+            });
+          }
         })
         .catch((error) => {
           console.error('Error searching restaurants:', error);

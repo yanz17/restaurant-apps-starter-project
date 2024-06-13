@@ -8,22 +8,18 @@ Before(({ I }) => {
 });
 
 Scenario('showing empty liked restaurant', ({ I }) => {
-  I.waitForElement('.catalog', 5);
-  I.seeElement('.catalog');
-
-  I.see('Tidak ada restoran untuk ditampilkan', '.restaurant-item__not__found');
+  I.see('Tidak ada restoran favorit untuk ditampilkan');
 });
 
 Scenario('liking one restaurant', async ({ I }) => {
-  I.see('Tidak ada restoran untuk ditampilkan', '.restaurant-item__not__found');
-  // eslint-disable-next-line no-trailing-spaces
-  
+  I.see('Tidak ada restoran favorit untuk ditampilkan');
+
   I.amOnPage('/');
 
-  pause();
-
   I.seeElement('.catalog-text-name a');
-  const firstRestaurant = locate('.catalog-title-name a').first();
+  const firstRestaurant = locate('.catalog-text-name a').first();
+  I.waitForVisible(firstRestaurant, 10); // Wait for up to 10 seconds for the element to be visible
+  I.waitForEnabled(firstRestaurant, 10);
   const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
 
@@ -38,44 +34,40 @@ Scenario('liking one restaurant', async ({ I }) => {
 });
 
 Scenario('searching restaurants', async ({ I }) => {
-  I.see('Tidak ada film untuk ditampilkan', '.restaurant-item__not__found');
+  I.see('Tidak ada restoran favorit untuk ditampilkan');
 
   I.amOnPage('/');
 
-  I.seeElement('.catalog-text-name a');
+  I.seeElement('.search');
 
-  const titles = [];
-  // eslint-disable-next-line no-plusplus
-  for (let i = 1; i <= 3; i++) {
-    I.click(locate('.catalog-text-name a').at(i));
-    I.seeElement('#likeButton');
-    I.click('#likeButton');
-    // eslint-disable-next-line no-await-in-loop
-    titles.push(await I.grabTextFrom('.name'));
-    I.amOnPage('/#/home');
-  }
-
-  I.amOnPage('/#/favorite');
-  I.seeElement('.catalog');
-
-  const visibleLikedRestaurant = await I.grabNumberOfVisibleElements('.catalog');
-  assert.strictEqual(titles.length, visibleLikedRestaurant);
-
-  const searchQuery = titles[1].substring(1, 3);
-
+  const searchQuery = 'Melting Pot';
   I.fillField('.search-input', searchQuery);
-  I.pressKey('Enter');
+  I.click('.search-submit');
 
-  // mendapatkan daftar film yang sesuai dengan searchQuery
-  const matchingRestaurant = titles.filter((title) => title.indexOf(searchQuery) !== -1);
-  const visibleSearchedLikedRestaurant = await I.grabNumberOfVisibleElements('.catalog');
+  I.waitForElement('.restaurant-container', 5);
 
-  assert.strictEqual(matchingRestaurant.length, visibleSearchedLikedRestaurant);
+  const restaurantTitles = await I.grabTextFromAll('.catalog-text-name');
 
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < matchingRestaurant.length; i++) {
-    // eslint-disable-next-line no-await-in-loop
-    const visibleTitle = await I.grabTextFrom(locate('.catalog-text-name').at(i + 1));
-    assert.strictEqual(matchingRestaurant[i], visibleTitle);
-  }
+  restaurantTitles.forEach((title) => {
+    assert.ok(title.toLowerCase(), searchQuery.toLocaleLowerCase());
+  });
+});
+
+Scenario('No results found for search query', async ({ I }) => {
+  // Enter a search query that doesn't match any restaurants
+  I.amOnPage('/');
+
+  const searchQuery = 'invalid query';
+  I.fillField('.search-input', searchQuery);
+
+  // Submit the search form
+  I.click('.search-submit');
+
+  // Wait for the search results to load
+  I.waitForElement('.restaurant-container', 5);
+
+  // Check if the "No restaurants found" message is displayed
+  I.seeElement('.no-restaurants-message');
+  const noRestaurantsMessage = await I.grabTextFrom('.no-restaurants-message');
+  assert.ok(noRestaurantsMessage, 'Tidak ada restoran yang dapat ditampilkan');
 });

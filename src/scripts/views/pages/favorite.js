@@ -27,9 +27,14 @@ const Favorite = {
     const restaurant = await FavoriteRestaurantIdb.getAllRestaurant();
     const restaurantContainer = document.querySelector('#restaurant');
 
-    restaurant.forEach((restaurant) => {
-      restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+    if (restaurant.length === 0) {
+      // If there are no favorite restaurants, display a message in the #restaurant container
+      restaurantContainer.textContent = 'Tidak ada restoran favorit untuk ditampilkan';
+    } else {
+      restaurant.forEach((restaurant) => {
+        restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+    }
   },
 };
 

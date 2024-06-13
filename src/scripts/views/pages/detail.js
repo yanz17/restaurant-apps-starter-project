@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import UrlParser from '../../routes/url-parser';
 import RestaurantSource from '../../data/restaurant-source';
 import { createRestaurantDetailTemplate } from '../templates/template-creator';

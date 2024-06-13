@@ -88,7 +88,9 @@ const createRestaurantItemTemplate = (restaurants) => `
         <button class="catalog-link"><a href="/#/detail/${restaurants.id}">Selengkapnya</a></button>
         <img class="catalog-image" loading="lazy" src="${`${CONFIG.BASE_IMAGE_URL}large/${restaurants.pictureId}`}" alt="${restaurants.name}" />
         <div class="catalog-text">
-            <h4 class="catalog-text-name">${restaurants.name}</h4>
+            <h4 class="catalog-text-name">
+                <a href="/#/detail/${restaurants.id}" style="text-decoration:none;color:black;">${restaurants.name}</a>
+            </h4>
             <p class="catalog-text-city">${restaurants.city} | ${restaurants.rating} <span class="bintang">★</span></p>
             <p class="catalog-text-description">${restaurants.description}</p>
             <div class="catalog-text-transition"></div>

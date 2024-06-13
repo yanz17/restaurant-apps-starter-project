@@ -34,6 +34,14 @@ async function initApp() {
     // eslint-disable-next-line no-use-before-define
     initSW();
   });
+
+  // eslint-disable-next-line no-shadow
+  const { default: _ } = await import('lodash.debounce');
+  const logHash = _.debounce(() => {
+    console.log('Current hash:', window.location.hash);
+  }, 300);
+
+  window.addEventListener('hashchange', logHash);
 }
 
 async function initSW() {
